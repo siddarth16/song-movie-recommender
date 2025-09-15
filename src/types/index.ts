@@ -1,10 +1,10 @@
 // Core types for the recommendation system
 
-export type Domain = 'songs' | 'movies';
+export type Domain = 'songs' | 'movies' | 'tvshows';
 
 export interface Seed {
   title: string;
-  by?: string; // artist for songs, director for movies
+  by?: string; // artist for songs, director for movies, creator for TV shows
 }
 
 export interface SongRecommendation {
@@ -25,7 +25,16 @@ export interface MovieRecommendation {
   confidence: number;
 }
 
-export type Recommendation = SongRecommendation | MovieRecommendation;
+export interface TVShowRecommendation {
+  title: string;
+  creator: string;
+  year: number;
+  genres: string[];
+  why: string;
+  confidence: number;
+}
+
+export type Recommendation = SongRecommendation | MovieRecommendation | TVShowRecommendation;
 
 export interface RecommendationResponse {
   items: Recommendation[];
@@ -68,4 +77,12 @@ export const SAMPLE_MOVIES: Seed[] = [
   { title: "Inception", by: "Christopher Nolan" },
   { title: "The Godfather", by: "Francis Ford Coppola" },
   { title: "Spirited Away", by: "Hayao Miyazaki" }
+];
+
+export const SAMPLE_TVSHOWS: Seed[] = [
+  { title: "Breaking Bad", by: "Vince Gilligan" },
+  { title: "The Wire", by: "David Simon" },
+  { title: "Game of Thrones", by: "David Benioff & D.B. Weiss" },
+  { title: "The Sopranos", by: "David Chase" },
+  { title: "Stranger Things", by: "The Duffer Brothers" }
 ];

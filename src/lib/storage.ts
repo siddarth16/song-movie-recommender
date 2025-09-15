@@ -11,7 +11,8 @@ interface StorageData {
 const defaultState: AppState = {
   lastSeeds: {
     songs: [],
-    movies: []
+    movies: [],
+    tvshows: []
   },
   lastCount: 10,
   theme: 'light'
@@ -55,7 +56,8 @@ export class Storage {
       return {
         lastSeeds: {
           songs: Array.isArray(data.state.lastSeeds?.songs) ? data.state.lastSeeds.songs : [],
-          movies: Array.isArray(data.state.lastSeeds?.movies) ? data.state.lastSeeds.movies : []
+          movies: Array.isArray(data.state.lastSeeds?.movies) ? data.state.lastSeeds.movies : [],
+          tvshows: Array.isArray(data.state.lastSeeds?.tvshows) ? data.state.lastSeeds.tvshows : []
         },
         lastCount: typeof data.state.lastCount === 'number' ? 
                    Math.max(1, Math.min(20, data.state.lastCount)) : 10,

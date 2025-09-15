@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
     // Validate domain
     if (!validateDomain(body.domain)) {
       return NextResponse.json(
-        { error: 'Domain must be either "songs" or "movies"', code: 'BAD_REQUEST' },
+        { error: 'Domain must be "songs", "movies", or "tvshows"', code: 'BAD_REQUEST' },
         { status: 400 }
       );
     }

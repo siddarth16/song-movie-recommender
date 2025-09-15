@@ -52,6 +52,9 @@ export function AppShell({ children }: AppShellProps) {
               <NavLink href="/movies" active={pathname === '/movies'}>
                 Movies
               </NavLink>
+              <NavLink href="/tvshows" active={pathname === '/tvshows'}>
+                TV Shows
+              </NavLink>
             </nav>
 
             {/* Theme Toggle */}
@@ -66,7 +69,7 @@ export function AppShell({ children }: AppShellProps) {
 
           {/* Mobile Navigation */}
           <nav className="md:hidden py-4 border-t-2 border-black" role="navigation">
-            <div className="flex gap-1">
+            <div className="flex gap-1 flex-wrap">
               <NavLink href="/" active={pathname === '/'}>
                 Home
               </NavLink>
@@ -75,6 +78,9 @@ export function AppShell({ children }: AppShellProps) {
               </NavLink>
               <NavLink href="/movies" active={pathname === '/movies'}>
                 Movies
+              </NavLink>
+              <NavLink href="/tvshows" active={pathname === '/tvshows'}>
+                TV Shows
               </NavLink>
             </div>
           </nav>

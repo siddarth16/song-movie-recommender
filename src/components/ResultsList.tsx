@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Recommendation, Domain } from '@/types';
-import { formatYear, formatGenres, truncateText } from '@/lib/utils';
+import { formatYear, truncateText } from '@/lib/utils';
 import { useToast } from '@/components/ui/Toast';
 
 interface ResultsListProps {
@@ -32,7 +31,9 @@ export function ResultsList({ domain, recommendations, isLoading, error }: Resul
   const copyList = () => {
     const text = recommendations
       .map(rec => {
-        const creator = 'artist' in rec ? rec.artist : rec.director;
+        const creator = 'artist' in rec ? rec.artist :
+                       'director' in rec ? rec.director :
+                       'creator' in rec ? rec.creator : 'Unknown';
         return `${rec.title} - ${creator} (${rec.year})`;
       })
       .join('\n');
@@ -104,7 +105,6 @@ export function ResultsList({ domain, recommendations, isLoading, error }: Resul
           <RecommendationCard
             key={index}
             recommendation={rec}
-            domain={domain}
             rank={index + 1}
           />
         ))}
@@ -119,8 +119,10 @@ interface RecommendationCardProps {
   rank: number;
 }
 
-function RecommendationCard({ recommendation, domain, rank }: RecommendationCardProps) {
-  const creator = 'artist' in recommendation ? recommendation.artist : recommendation.director;
+function RecommendationCard({ recommendation, rank }: RecommendationCardProps) {
+  const creator = 'artist' in recommendation ? recommendation.artist :
+                 'director' in recommendation ? recommendation.director :
+                 'creator' in recommendation ? recommendation.creator : 'Unknown';
   const confidencePercent = Math.round(recommendation.confidence * 100);
   
   const confidenceColor = 

@@ -32,6 +32,22 @@ SEEDS:
 {seeds_json}
 REQUESTED: {count}`;
 
+const TVSHOW_PROMPT_TEMPLATE = `You are a TV series recommender. Given up to five seed TV shows (title and optional creator/year),
+infer taste signals (narrative style, character development, pacing, themes, tone, setting, format).
+Return ONLY minified JSON conforming to this schema:
+
+{ "items":[{"title":"String","creator":"String","year":1234,"genres":["String"],"why":"<=220 chars","confidence":0.0}], "meta":{"seed_count":INT,"requested":INT,"model":"gemini-2.5-flash"} }
+
+- Produce EXACTLY {requested} items unless impossible; still fill but lower confidence and explain tension in \`why\`.
+- Keep \`confidence\` in [0,1].
+- Avoid duplicates; avoid seeds themselves.
+- Mix a few non-obvious choices if confidence is high.
+- Consider both streaming and broadcast series.
+- Respond with pure JSON. No markdown.
+SEEDS:
+{seeds_json}
+REQUESTED: {count}`;
+
 let genAI: GoogleGenerativeAI | null = null;
 
 function getGenAI() {
@@ -66,7 +82,9 @@ export async function getRecommendations(
       }
     });
 
-    const template = domain === 'songs' ? SONG_PROMPT_TEMPLATE : MOVIE_PROMPT_TEMPLATE;
+    const template = domain === 'songs' ? SONG_PROMPT_TEMPLATE :
+                    domain === 'movies' ? MOVIE_PROMPT_TEMPLATE :
+                    TVSHOW_PROMPT_TEMPLATE;
     const seedsJson = JSON.stringify(seeds);
     const prompt = template
       .replace('{seeds_json}', seedsJson)
@@ -158,10 +176,15 @@ function normalizeRecommendation(item: any, domain: Domain): any {
       ...baseItem,
       artist: item.artist?.trim() || 'Unknown Artist'
     };
-  } else {
+  } else if (domain === 'movies') {
     return {
       ...baseItem,
       director: item.director?.trim() || 'Unknown Director'
+    };
+  } else {
+    return {
+      ...baseItem,
+      creator: item.creator?.trim() || 'Unknown Creator'
     };
   }
 }

@@ -7,8 +7,8 @@ export const SeedSchema = z.object({
 });
 
 export const RecommendationRequestSchema = z.object({
-  domain: z.enum(['songs', 'movies'], { 
-    message: 'Domain must be either "songs" or "movies"' 
+  domain: z.enum(['songs', 'movies', 'tvshows'], {
+    message: 'Domain must be "songs", "movies", or "tvshows"'
   }),
   seeds: z.array(SeedSchema).min(1, 'At least one seed is required').max(5, 'Maximum 5 seeds allowed'),
   count: z.number().min(1, 'Count must be at least 1').max(20, 'Count must be at most 20').int('Count must be an integer')
@@ -57,7 +57,7 @@ export function validateSeeds(seeds: any[]): { valid: boolean; errors: string[] 
 }
 
 export function validateDomain(domain: any): domain is Domain {
-  return domain === 'songs' || domain === 'movies';
+  return domain === 'songs' || domain === 'movies' || domain === 'tvshows';
 }
 
 export function validateCount(count: any): { valid: boolean; value?: number; error?: string } {

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card, CardContent } from '@/components/ui/Card';
-import { Seed, Domain, SAMPLE_SONGS, SAMPLE_MOVIES } from '@/types';
+import { Seed, Domain, SAMPLE_SONGS, SAMPLE_MOVIES, SAMPLE_TVSHOWS } from '@/types';
 import { validateSeedTitle, normalizeSeed } from '@/lib/utils';
 
 interface SeedListProps {
@@ -60,7 +60,9 @@ export function SeedList({ domain, seeds, onSeedsChange, maxSeeds = 5 }: SeedLis
   };
 
   const addSampleSeeds = () => {
-    const samples = domain === 'songs' ? SAMPLE_SONGS : SAMPLE_MOVIES;
+    const samples = domain === 'songs' ? SAMPLE_SONGS :
+                   domain === 'movies' ? SAMPLE_MOVIES :
+                   SAMPLE_TVSHOWS;
     const sampleSeeds = samples.slice(0, 3).map(normalizeSeed);
     onSeedsChange(sampleSeeds);
     setErrors({});
@@ -71,9 +73,12 @@ export function SeedList({ domain, seeds, onSeedsChange, maxSeeds = 5 }: SeedLis
     setErrors({});
   };
 
-  const byLabel = domain === 'songs' ? 'Artist' : 'Director';
-  const placeholderTitle = domain === 'songs' ? 'Song title...' : 'Movie title...';
-  const placeholderBy = domain === 'songs' ? 'Artist name...' : 'Director name...';
+  const byLabel = domain === 'songs' ? 'Artist' :
+                 domain === 'movies' ? 'Director' : 'Creator';
+  const placeholderTitle = domain === 'songs' ? 'Song title...' :
+                          domain === 'movies' ? 'Movie title...' : 'TV show title...';
+  const placeholderBy = domain === 'songs' ? 'Artist name...' :
+                       domain === 'movies' ? 'Director name...' : 'Creator name...';
 
   return (
     <Card>

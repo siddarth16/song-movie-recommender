@@ -9,7 +9,7 @@ export function LandingHero() {
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-display font-mono font-black mb-6 text-black">
-          Find your next track & film.
+          Find your next track, film & series.
         </h1>
         <p className="text-lg font-mono font-bold max-w-2xl mx-auto mb-12 text-surface-800">
           Give us up to five seeds. Gemini 2.5 Flash will riff on your taste.
@@ -35,7 +35,7 @@ export function LandingHero() {
         </div>
 
         {/* Main CTAs */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <CTACard
             href="/songs"
             title="Songs"
@@ -49,6 +49,13 @@ export function LandingHero() {
             description="List a few films you love. We'll surface neighbors by tone, theme, and craft."
             emoji="🎬"
             color="accent"
+          />
+          <CTACard
+            href="/tvshows"
+            title="TV Shows"
+            description="Share your favorite series (add creator if you know it). We'll find shows with similar vibes and storytelling."
+            emoji="📺"
+            color="primary"
           />
         </div>
       </div>
