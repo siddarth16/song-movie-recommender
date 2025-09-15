@@ -12,13 +12,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'md', loading = false, disabled, children, ...props }, ref) => {
     const getVariantStyles = (variant: string, disabled: boolean, loading: boolean) => {
-      const base = 'font-sans font-black border-3 rounded-lg transition-all duration-200 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 hover-lift brutal-shadow-color';
-      let bg = 'bg-gradient-to-r from-white to-surface-50 text-surface-900 border-surface-600 hover:from-surface-100 hover:to-surface-200 focus:ring-surface-500';
+      const base = 'font-sans font-semibold border-2 rounded-lg transition-all duration-200 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 hover-lift brutal-shadow-soft ripple-effect touch-target active:button-press';
+      let bg = 'bg-white text-surface-800 border-surface-300 hover:bg-surface-50 focus:ring-surface-400 focus-visible';
 
-      if (variant === 'primary') bg = 'bg-gradient-to-r from-primary-500 to-pink-500 text-white border-surface-800 hover:from-primary-600 hover:to-pink-600 focus:ring-primary-500';
-      if (variant === 'accent') bg = 'bg-gradient-to-r from-accent-500 to-emerald-500 text-white border-surface-800 hover:from-accent-600 hover:to-emerald-600 focus:ring-accent-500';
+      if (variant === 'primary') bg = 'bg-gradient-to-r from-primary-400 to-pink-300 text-white border-primary-500 hover:from-primary-500 hover:to-pink-400 focus:ring-primary-400 focus-visible';
+      if (variant === 'accent') bg = 'bg-gradient-to-r from-accent-400 to-emerald-400 text-white border-accent-500 hover:from-accent-500 hover:to-emerald-500 focus:ring-accent-400 focus-visible';
 
-      const state = disabled || loading ? 'opacity-50 cursor-not-allowed hover:transform-none' : '';
+      const state = disabled || loading ? 'opacity-50 cursor-not-allowed hover:transform-none active:transform-none' : '';
 
       return `${base} ${bg} ${state}`;
     };

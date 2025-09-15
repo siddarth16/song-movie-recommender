@@ -14,22 +14,22 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="border-b-4 border-surface-800 bg-white/95 backdrop-blur-sm sticky top-0 z-40 brutal-shadow-multi">
+      <header className="border-b-3 border-surface-600 bg-white/95 backdrop-blur-sm sticky top-0 z-40 brutal-shadow-gentle">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-18">
             {/* Logo */}
             <Link
               href="/"
-              className="font-mono font-black text-2xl hover:scale-105 transition-all duration-200 hover-lift"
+              className="font-mono font-black text-xl hover:scale-105 transition-all duration-200 hover-lift"
               aria-label="Go to homepage"
             >
-              <span className="text-primary-600">RECO</span>
-              <span className="text-accent-500">•</span>
-              <span className="text-emerald-600">MMEND</span>
+              <span className="text-primary-500">RECO</span>
+              <span className="text-accent-400">•</span>
+              <span className="text-emerald-500">MMEND</span>
             </Link>
 
             {/* Navigation */}
-            <nav className="hidden md:flex items-center gap-2" role="navigation">
+            <nav className="hidden md:flex items-center gap-2" role="navigation" aria-label="Main navigation">
               <NavLink href="/" active={pathname === '/'}>
                 🏠 Home
               </NavLink>
@@ -46,14 +46,14 @@ export function AppShell({ children }: AppShellProps) {
 
             {/* Decorative Element */}
             <div className="hidden md:flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary-400 to-pink-400 rounded-full animate-pulse"></div>
+              <div className="w-6 h-6 bg-gradient-to-br from-primary-300 to-pink-200 rounded-full animate-pulse opacity-60"></div>
             </div>
 
           </div>
 
           {/* Mobile Navigation */}
-          <nav className="md:hidden py-4 border-t-2 border-surface-300" role="navigation">
-            <div className="grid grid-cols-2 gap-3">
+          <nav className="md:hidden py-6 border-t-2 border-surface-300" role="navigation" aria-label="Mobile navigation">
+            <div className="grid grid-cols-2 gap-4">
               <NavLink href="/" active={pathname === '/'}>
                 🏠 Home
               </NavLink>
@@ -77,16 +77,16 @@ export function AppShell({ children }: AppShellProps) {
       </main>
 
       {/* Footer */}
-      <footer className="border-t-4 border-surface-800 gradient-bg-cool mt-auto" role="contentinfo">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <footer className="border-t-2 border-surface-400 gradient-bg-soft mt-auto" role="contentinfo">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="font-sans font-bold text-sm text-center text-surface-800">
+            <p className="font-sans font-medium text-sm text-center text-surface-700">
               ⚡ Powered by advanced AI • 🔒 No tracking • 🎨 Privacy-first design
             </p>
             <div className="flex gap-4">
               <a
                 href="https://github.com"
-                className="font-sans font-bold text-sm text-purple-600 hover:text-purple-800 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 hover-lift"
+                className="font-sans font-medium text-sm text-purple-500 hover:text-purple-700 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -94,7 +94,7 @@ export function AppShell({ children }: AppShellProps) {
               </a>
               <Link
                 href="/privacy"
-                className="font-sans font-bold text-sm text-emerald-600 hover:text-emerald-800 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 hover-lift"
+                className="font-sans font-medium text-sm text-emerald-500 hover:text-emerald-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2"
               >
                 🛡️ Privacy
               </Link>
@@ -117,11 +117,12 @@ function NavLink({ href, active, children }: NavLinkProps) {
     <Link
       href={href}
       className={cn(
-        'font-sans font-bold px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 hover-lift border-2',
+        'font-sans font-semibold px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 hover-lift border-2 touch-target ripple-effect focus-visible',
         active
-          ? 'bg-gradient-to-r from-primary-500 to-pink-500 text-white border-surface-800 brutal-shadow-color'
-          : 'bg-white text-surface-800 border-surface-300 hover:border-primary-400 hover:bg-primary-50 brutal-shadow-rainbow'
+          ? 'bg-gradient-to-r from-primary-400 to-pink-300 text-white border-surface-600 brutal-shadow-soft'
+          : 'bg-white text-surface-700 border-surface-200 hover:border-primary-300 hover:bg-primary-25 brutal-shadow-cute'
       )}
+      aria-current={active ? 'page' : undefined}
     >
       {children}
     </Link>

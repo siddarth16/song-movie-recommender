@@ -7,23 +7,26 @@ export function LandingHero() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* Hero Section */}
-      <div className="text-center mb-16 relative">
+      <div className="text-center section-spacing relative">
         {/* Background Decoration */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-10 left-10 w-20 h-20 bg-yellow-300 rounded-full opacity-70 animate-bounce"></div>
-          <div className="absolute top-32 right-16 w-16 h-16 bg-pink-400 rounded-full opacity-60 animate-pulse"></div>
-          <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-emerald-400 rounded-full opacity-50"></div>
+          <div className="absolute top-16 left-16 w-12 h-12 bg-yellow-200 rounded-full opacity-40 pulse-gentle"></div>
+          <div className="absolute top-40 right-20 w-10 h-10 bg-pink-200 rounded-full opacity-35 pulse-gentle" style={{animationDelay: '0.5s'}}></div>
+          <div className="absolute bottom-32 left-1/3 w-8 h-8 bg-emerald-200 rounded-full opacity-30 pulse-gentle" style={{animationDelay: '1s'}}></div>
         </div>
 
-        <h1 className="text-display font-mono font-black mb-6 bg-gradient-to-r from-primary-600 via-purple-600 to-accent-600 bg-clip-text text-transparent hover-lift">
+        <h1 className="text-display font-mono font-black mb-8 bg-gradient-to-r from-primary-500 via-purple-400 to-accent-500 bg-clip-text text-transparent">
           Find your next track, film & series.
         </h1>
-        <p className="text-xl font-sans font-bold max-w-2xl mx-auto mb-12 text-surface-800 leading-relaxed">
+        <p className="text-xl font-sans font-semibold max-w-2xl mx-auto mb-16 text-surface-700 leading-relaxed">
           🎯 Give us up to five seeds. Our AI engine will analyze your taste and find perfect matches.
         </p>
 
+        {/* Content Divider */}
+        <div className="content-divider"></div>
+
         {/* Feature Callouts */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
           <FeatureCard
             title="No Login"
             description="Open & instant"
@@ -41,8 +44,11 @@ export function LandingHero() {
           />
         </div>
 
+        {/* Content Divider */}
+        <div className="content-divider"></div>
+
         {/* Main CTAs */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <CTACard
             href="/songs"
             title="Songs"
@@ -78,10 +84,10 @@ interface FeatureCardProps {
 
 function FeatureCard({ title, description, emoji }: FeatureCardProps) {
   return (
-    <Card className="text-center p-6 gradient-bg-warm border-2 border-surface-800 brutal-shadow-color hover-lift">
-      <div className="text-5xl mb-4 hover:scale-110 transition-transform duration-200">{emoji}</div>
-      <h3 className="font-sans font-black text-xl mb-3 text-surface-900">{title}</h3>
-      <p className="font-sans font-bold text-base text-surface-700">{description}</p>
+    <Card className="text-center p-6 gradient-bg-warm border-2 border-surface-400 brutal-shadow-soft hover-lift">
+      <div className="text-4xl mb-4 hover:scale-105 transition-transform duration-200">{emoji}</div>
+      <h3 className="font-sans font-bold text-lg mb-2 text-surface-800">{title}</h3>
+      <p className="font-sans font-medium text-sm text-surface-600">{description}</p>
     </Card>
   );
 }
@@ -96,25 +102,25 @@ interface CTACardProps {
 
 function CTACard({ href, title, description, emoji, color }: CTACardProps) {
   const colorClasses = {
-    primary: 'bg-gradient-to-br from-primary-100 to-yellow-100 border-primary-600 hover:from-primary-200 hover:to-yellow-200',
-    accent: 'bg-gradient-to-br from-accent-100 to-emerald-100 border-accent-600 hover:from-accent-200 hover:to-emerald-200'
+    primary: 'bg-gradient-to-br from-primary-50 to-yellow-50 border-primary-400 hover:from-primary-100 hover:to-yellow-100',
+    accent: 'bg-gradient-to-br from-accent-50 to-emerald-50 border-accent-400 hover:from-accent-100 hover:to-emerald-100'
   };
 
   return (
-    <Link href={href} className="block group" tabIndex={0}>
+    <Link href={href} className="block group touch-target" tabIndex={0}>
       <Card
-        className={`p-8 h-full transition-all duration-300 group-hover:transform group-hover:-translate-x-2 group-hover:-translate-y-2 group-hover:rotate-2 border-4 brutal-shadow-rainbow hover-lift ${colorClasses[color]}`}
+        className={`p-8 h-full transition-all duration-200 group-hover:transform group-hover:-translate-x-1 group-hover:-translate-y-1 group-hover:rotate-1 border-3 brutal-shadow-cute hover-lift ripple-effect group-active:success-bounce focus-visible ${colorClasses[color]}`}
         role="button"
         tabIndex={-1}
       >
         <CardContent className="text-center">
-          <div className="text-7xl mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+          <div className="text-6xl mb-6 group-hover:scale-105 group-hover:rotate-6 transition-all duration-200">
             {emoji}
           </div>
-          <h2 className="font-mono font-black text-title mb-4 bg-gradient-to-r from-surface-900 to-surface-700 bg-clip-text text-transparent">
+          <h2 className="font-mono font-black text-title mb-4 text-surface-800">
             {title}
           </h2>
-          <p className="font-sans font-bold text-lg text-surface-800 leading-relaxed">
+          <p className="font-sans font-semibold text-base text-surface-700 leading-relaxed">
             {description}
           </p>
         </CardContent>

@@ -13,9 +13,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     return (
       <div
         className={cn(
-          'bg-white border-3 border-surface-700 rounded-lg p-6 brutal-shadow-color',
-          interactive && 'cursor-pointer hover-lift hover:brutal-shadow-multi transition-all duration-300',
-          tilt && 'hover:rotate-2',
+          'bg-white border-2 border-surface-300 rounded-lg p-6 brutal-shadow-soft',
+          interactive && 'cursor-pointer hover-lift hover:brutal-shadow-gentle transition-all duration-200 ripple-effect focus-visible',
+          tilt && 'hover:rotate-1',
           className
         )}
         ref={ref}
@@ -41,7 +41,7 @@ const CardTitle = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadingEleme
   ({ className, ...props }, ref) => (
     <h3
       ref={ref}
-      className={cn('text-heading font-mono font-black bg-gradient-to-r from-surface-900 to-surface-700 bg-clip-text text-transparent', className)}
+      className={cn('text-heading font-mono font-black text-surface-800', className)}
       {...props}
     />
   )
