@@ -14,18 +14,18 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="border-b-3 border-surface-600 bg-white/95 backdrop-blur-sm sticky top-0 z-40 brutal-shadow-gentle">
+      <header className="border-b-2 border-gray-200 bg-white/95 backdrop-blur-sm sticky top-0 z-40 brutal-shadow-gentle">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-18">
+          <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link
               href="/"
               className="font-mono font-black text-xl hover:scale-105 transition-all duration-200 hover-lift"
               aria-label="Go to homepage"
             >
-              <span className="text-primary-500">RECO</span>
-              <span className="text-accent-400">•</span>
-              <span className="text-emerald-500">MMEND</span>
+              <span className="text-indigo-600">RECO</span>
+              <span className="text-purple-400">•</span>
+              <span className="text-emerald-600">MMEND</span>
             </Link>
 
             {/* Navigation */}
@@ -46,13 +46,13 @@ export function AppShell({ children }: AppShellProps) {
 
             {/* Decorative Element */}
             <div className="hidden md:flex items-center">
-              <div className="w-6 h-6 bg-gradient-to-br from-primary-300 to-pink-200 rounded-full animate-pulse opacity-60"></div>
+              <div className="w-6 h-6 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full animate-pulse opacity-60"></div>
             </div>
 
           </div>
 
           {/* Mobile Navigation */}
-          <nav className="md:hidden py-6 border-t-2 border-surface-300" role="navigation" aria-label="Mobile navigation">
+          <nav className="md:hidden py-6 border-t border-gray-200" role="navigation" aria-label="Mobile navigation">
             <div className="grid grid-cols-2 gap-4">
               <NavLink href="/" active={pathname === '/'}>
                 🏠 Home
@@ -77,7 +77,7 @@ export function AppShell({ children }: AppShellProps) {
       </main>
 
       {/* Footer */}
-      <footer className="border-t-2 border-surface-400 gradient-bg-soft mt-auto" role="contentinfo">
+      <footer className="border-t border-gray-200 gradient-bg-soft mt-auto" role="contentinfo">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-sans font-medium text-sm text-center text-surface-700">
@@ -119,8 +119,8 @@ function NavLink({ href, active, children }: NavLinkProps) {
       className={cn(
         'font-sans font-semibold px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 hover-lift border-2 touch-target ripple-effect focus-visible',
         active
-          ? 'bg-gradient-to-r from-primary-400 to-pink-300 text-white border-surface-600 brutal-shadow-soft'
-          : 'bg-white text-surface-700 border-surface-200 hover:border-primary-300 hover:bg-primary-25 brutal-shadow-cute'
+          ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-indigo-600 brutal-shadow-soft'
+          : 'bg-white text-surface-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50 brutal-shadow-cute'
       )}
       aria-current={active ? 'page' : undefined}
     >

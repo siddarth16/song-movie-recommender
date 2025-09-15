@@ -15,7 +15,7 @@ export function LandingHero() {
           <div className="absolute bottom-32 left-1/3 w-8 h-8 bg-emerald-200 rounded-full opacity-30 pulse-gentle" style={{animationDelay: '1s'}}></div>
         </div>
 
-        <h1 className="text-display font-mono font-black mb-8 bg-gradient-to-r from-primary-500 via-purple-400 to-accent-500 bg-clip-text text-transparent">
+        <h1 className="text-display font-mono font-black mb-8 bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
           Find your next track, film & series.
         </h1>
         <p className="text-xl font-sans font-semibold max-w-2xl mx-auto mb-16 text-surface-700 leading-relaxed">
@@ -84,7 +84,7 @@ interface FeatureCardProps {
 
 function FeatureCard({ title, description, emoji }: FeatureCardProps) {
   return (
-    <Card className="text-center p-6 gradient-bg-warm border-2 border-surface-400 brutal-shadow-soft hover-lift">
+    <Card className="text-center p-6 gradient-bg-warm border-2 border-gray-200 brutal-shadow-soft hover-lift">
       <div className="text-4xl mb-4 hover:scale-105 transition-transform duration-200">{emoji}</div>
       <h3 className="font-sans font-bold text-lg mb-2 text-surface-800">{title}</h3>
       <p className="font-sans font-medium text-sm text-surface-600">{description}</p>
@@ -102,14 +102,14 @@ interface CTACardProps {
 
 function CTACard({ href, title, description, emoji, color }: CTACardProps) {
   const colorClasses = {
-    primary: 'bg-gradient-to-br from-primary-50 to-yellow-50 border-primary-400 hover:from-primary-100 hover:to-yellow-100',
-    accent: 'bg-gradient-to-br from-accent-50 to-emerald-50 border-accent-400 hover:from-accent-100 hover:to-emerald-100'
+    primary: 'bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200 hover:from-indigo-100 hover:to-purple-100',
+    accent: 'bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200 hover:from-emerald-100 hover:to-teal-100'
   };
 
   return (
     <Link href={href} className="block group touch-target" tabIndex={0}>
       <Card
-        className={`p-8 h-full transition-all duration-200 group-hover:transform group-hover:-translate-x-1 group-hover:-translate-y-1 group-hover:rotate-1 border-3 brutal-shadow-cute hover-lift ripple-effect group-active:success-bounce focus-visible ${colorClasses[color]}`}
+        className={`p-8 h-full transition-all duration-200 group-hover:transform group-hover:-translate-x-1 group-hover:-translate-y-1 group-hover:rotate-1 border-2 brutal-shadow-cute hover-lift ripple-effect group-active:success-bounce focus-visible ${colorClasses[color]}`}
         role="button"
         tabIndex={-1}
       >

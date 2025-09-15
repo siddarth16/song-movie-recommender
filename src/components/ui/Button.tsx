@@ -13,10 +13,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'md', loading = false, disabled, children, ...props }, ref) => {
     const getVariantStyles = (variant: string, disabled: boolean, loading: boolean) => {
       const base = 'font-sans font-semibold border-2 rounded-lg transition-all duration-200 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 hover-lift brutal-shadow-soft ripple-effect touch-target active:button-press';
-      let bg = 'bg-white text-surface-800 border-surface-300 hover:bg-surface-50 focus:ring-surface-400 focus-visible';
+      let bg = 'bg-white text-surface-800 border-gray-200 hover:bg-gray-50 focus:ring-indigo-400 focus-visible';
 
-      if (variant === 'primary') bg = 'bg-gradient-to-r from-primary-400 to-pink-300 text-white border-primary-500 hover:from-primary-500 hover:to-pink-400 focus:ring-primary-400 focus-visible';
-      if (variant === 'accent') bg = 'bg-gradient-to-r from-accent-400 to-emerald-400 text-white border-accent-500 hover:from-accent-500 hover:to-emerald-500 focus:ring-accent-400 focus-visible';
+      if (variant === 'primary') bg = 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-indigo-600 hover:from-indigo-600 hover:to-purple-600 focus:ring-indigo-400 focus-visible';
+      if (variant === 'accent') bg = 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white border-emerald-600 hover:from-emerald-600 hover:to-teal-600 focus:ring-emerald-400 focus-visible';
 
       const state = disabled || loading ? 'opacity-50 cursor-not-allowed hover:transform-none active:transform-none' : '';
 

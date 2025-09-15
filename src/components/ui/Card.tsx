@@ -13,7 +13,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     return (
       <div
         className={cn(
-          'bg-white border-2 border-surface-300 rounded-lg p-6 brutal-shadow-soft',
+          'bg-white border-2 border-gray-200 rounded-lg p-6 brutal-shadow-soft',
           interactive && 'cursor-pointer hover-lift hover:brutal-shadow-gentle transition-all duration-200 ripple-effect focus-visible',
           tilt && 'hover:rotate-1',
           className
