@@ -3,10 +3,10 @@ import { RecommenderPage } from '@/components/RecommenderPage';
 
 export const metadata: Metadata = {
   title: 'Song Recommendations • RECOMMEND',
-  description: 'Get AI-powered song recommendations based on your favorite tracks. Powered by Gemini 2.5 Flash.',
+  description: 'Get AI-powered song recommendations based on your favorite tracks. Advanced algorithms analyze your taste.',
   openGraph: {
     title: 'Song Recommendations • RECOMMEND',
-    description: 'Get AI-powered song recommendations based on your favorite tracks. Powered by Gemini 2.5 Flash.',
+    description: 'Get AI-powered song recommendations based on your favorite tracks. Advanced algorithms analyze your taste.',
   }
 };
 

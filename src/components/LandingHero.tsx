@@ -12,7 +12,7 @@ export function LandingHero() {
           Find your next track, film & series.
         </h1>
         <p className="text-lg font-sans font-medium max-w-2xl mx-auto mb-12 text-surface-800">
-          Give us up to five seeds. Gemini 2.5 Flash will riff on your taste.
+          Give us up to five seeds. Our AI engine will analyze your taste and find perfect matches.
         </p>
 
         {/* Feature Callouts */}
@@ -23,8 +23,8 @@ export function LandingHero() {
             emoji="🚀"
           />
           <FeatureCard
-            title="Fast AI"
-            description="Gemini Flash under the hood"
+            title="Smart AI"
+            description="Advanced recommendation engine"
             emoji="⚡"
           />
           <FeatureCard

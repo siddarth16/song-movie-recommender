@@ -135,7 +135,7 @@ export function AppShell({ children }: AppShellProps) {
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-sans font-medium text-sm text-center">
-              Powered by Gemini 2.5 Flash • No tracking • Server-side AI
+              Powered by advanced AI • No tracking • Privacy-first design
             </p>
             <div className="flex gap-4">
               <a

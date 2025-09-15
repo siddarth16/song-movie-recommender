@@ -3,10 +3,10 @@ import { RecommenderPage } from '@/components/RecommenderPage';
 
 export const metadata: Metadata = {
   title: 'TV Show Recommendations • RECOMMEND',
-  description: 'Get AI-powered TV show recommendations based on your favorite series. Powered by Gemini 2.5 Flash.',
+  description: 'Get AI-powered TV show recommendations based on your favorite series. Advanced algorithms analyze your taste.',
   openGraph: {
     title: 'TV Show Recommendations • RECOMMEND',
-    description: 'Get AI-powered TV show recommendations based on your favorite series. Powered by Gemini 2.5 Flash.',
+    description: 'Get AI-powered TV show recommendations based on your favorite series. Advanced algorithms analyze your taste.',
   }
 };
 

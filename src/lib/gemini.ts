@@ -5,7 +5,7 @@ const SONG_PROMPT_TEMPLATE = `You are a music recommender. Given up to five seed
 infer taste signals (mood, tempo, genre, era, production, vocal style, cultural niche).
 Return ONLY minified JSON conforming to this schema:
 
-{ "items":[{"title":"String","artist":"String","year":1234,"genres":["String"],"why":"<=220 chars","confidence":0.0}], "meta":{"seed_count":INT,"requested":INT,"model":"gemini-2.5-flash"} }
+{ "items":[{"title":"String","artist":"String","year":1234,"genres":["String"],"why":"<=220 chars","confidence":0.0}], "meta":{"seed_count":INT,"requested":INT,"model":"ai-engine"} }
 
 - Produce EXACTLY {requested} items unless seeds are contradictory; if so, still produce but lower confidence and explain briefly in \`why\`.
 - Keep \`confidence\` in [0,1].
@@ -22,7 +22,7 @@ const MOVIE_PROMPT_TEMPLATE = `You are a film recommender. Given up to five seed
 infer taste signals (tone, themes, pacing, cinematography, period, country, language).
 Return ONLY minified JSON conforming to this schema:
 
-{ "items":[{"title":"String","director":"String","year":1234,"genres":["String"],"why":"<=220 chars","confidence":0.0}], "meta":{"seed_count":INT,"requested":INT,"model":"gemini-2.5-flash"} }
+{ "items":[{"title":"String","director":"String","year":1234,"genres":["String"],"why":"<=220 chars","confidence":0.0}], "meta":{"seed_count":INT,"requested":INT,"model":"ai-engine"} }
 
 - Produce EXACTLY {requested} items unless impossible; still fill but lower confidence and explain tension in \`why\`.
 - Keep \`confidence\` in [0,1].
@@ -38,7 +38,7 @@ const TVSHOW_PROMPT_TEMPLATE = `You are a TV series recommender. Given up to fiv
 infer taste signals (narrative style, character development, pacing, themes, tone, setting, format).
 Return ONLY minified JSON conforming to this schema:
 
-{ "items":[{"title":"String","creator":"String","year":1234,"genres":["String"],"why":"<=220 chars","confidence":0.0}], "meta":{"seed_count":INT,"requested":INT,"model":"gemini-2.5-flash"} }
+{ "items":[{"title":"String","creator":"String","year":1234,"genres":["String"],"why":"<=220 chars","confidence":0.0}], "meta":{"seed_count":INT,"requested":INT,"model":"ai-engine"} }
 
 - Produce EXACTLY {requested} items unless impossible; still fill but lower confidence and explain tension in \`why\`.
 - Keep \`confidence\` in [0,1].
@@ -99,7 +99,7 @@ export async function getRecommendations(
     const text = response.text();
 
     // Parse and validate response
-    const parsed = parseGeminiResponse(text);
+    const parsed = parseAIResponse(text);
     
     // Validate structure
     if (!parsed.items || !Array.isArray(parsed.items)) {
@@ -110,7 +110,7 @@ export async function getRecommendations(
       parsed.meta = {
         seed_count: seeds.length,
         requested: count,
-        model: 'gemini-2.5-flash'
+        model: 'ai-engine'
       };
     }
 
@@ -123,7 +123,7 @@ export async function getRecommendations(
     return parsed as RecommendationResponse;
 
   } catch (error) {
-    console.error(`Gemini API error (attempt ${retryCount + 1}):`, error);
+    console.error(`AI engine error (attempt ${retryCount + 1}):`, error);
     
     if (retryCount < maxRetries) {
       // Exponential backoff
@@ -132,11 +132,11 @@ export async function getRecommendations(
       return getRecommendations(domain, seeds, count, retryCount + 1);
     }
 
-    throw new Error('Failed to get recommendations from Gemini API');
+    throw new Error('Failed to get recommendations from AI engine');
   }
 }
 
-function parseGeminiResponse(text: string): any {
+function parseAIResponse(text: string): any {
   // First try direct JSON parsing
   try {
     return JSON.parse(text);

@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     const count = countValidation.value!;
     const normalizedSeeds = body.seeds.map(normalizeSeed);
 
-    // Get recommendations from Gemini
+    // Get recommendations from AI engine
     try {
       const response = await getRecommendations(body.domain, normalizedSeeds, count);
       
@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
       });
 
     } catch (error) {
-      console.error('Gemini API error:', error);
+      console.error('AI engine error:', error);
       
       return NextResponse.json(
         { 

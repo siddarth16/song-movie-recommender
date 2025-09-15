@@ -32,7 +32,7 @@ export default function PrivacyPage() {
           </CardHeader>
           <CardContent>
             <ul className="font-mono font-medium space-y-2">
-              <li>• Your seed songs/movies are sent to Google's Gemini API for processing</li>
+              <li>• Your seed songs/movies are processed by our recommendation engine</li>
               <li>• No personal information is sent - only the titles and creators you provide</li>
               <li>• Recommendations are generated server-side and returned to you</li>
               <li>• We don't store your seeds or recommendations on our servers</li>
@@ -67,12 +67,12 @@ export default function PrivacyPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Third Party Services</CardTitle>
+            <CardTitle>AI Processing</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="font-mono font-medium mb-4">
-              This app uses Google's Gemini API to generate recommendations. 
-              Please refer to Google's privacy policy for how they handle the data we send to their API.
+              This app uses advanced AI technology to generate recommendations.
+              All processing is done server-side to protect your privacy.
             </p>
           </CardContent>
         </Card>

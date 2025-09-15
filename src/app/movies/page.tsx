@@ -3,10 +3,10 @@ import { RecommenderPage } from '@/components/RecommenderPage';
 
 export const metadata: Metadata = {
   title: 'Movie Recommendations • RECOMMEND',
-  description: 'Get AI-powered movie recommendations based on your favorite films. Powered by Gemini 2.5 Flash.',
+  description: 'Get AI-powered movie recommendations based on your favorite films. Advanced algorithms analyze your taste.',
   openGraph: {
     title: 'Movie Recommendations • RECOMMEND',
-    description: 'Get AI-powered movie recommendations based on your favorite films. Powered by Gemini 2.5 Flash.',
+    description: 'Get AI-powered movie recommendations based on your favorite films. Advanced algorithms analyze your taste.',
   }
 };
 
