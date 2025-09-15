@@ -115,7 +115,6 @@ export function ResultsList({ domain, recommendations, isLoading, error }: Resul
 
 interface RecommendationCardProps {
   recommendation: Recommendation;
-  domain: Domain;
   rank: number;
 }
 
