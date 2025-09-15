@@ -1,28 +1,25 @@
 @import "tailwindcss";
 
-/* Neo-Brutalist Design System CSS */
+/* Neo-Brutalist Design System CSS with Vibrant Colors */
 :root {
-  /* Light theme colors */
+  /* Bright, colorful theme */
   --bg-primary: #ffffff;
-  --bg-surface: #f5f5f5;
-  --text-primary: #000000;
-  --text-secondary: #262626;
-  --border-color: #000000;
+  --bg-surface: #f8fafc;
+  --bg-gradient-start: #fef3c7;
+  --bg-gradient-end: #fed7d7;
+  --text-primary: #1a202c;
+  --text-secondary: #2d3748;
+  --border-color: #2d3748;
   --accent-primary: #f97316;
   --accent-secondary: #06b6d4;
-  --shadow-color: #000000;
-}
-
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #0a0a0a;
-  --bg-surface: #262626;
-  --text-primary: #ffffff;
-  --text-secondary: #e5e5e5;
-  --border-color: #ffffff;
-  --accent-primary: #f97316;
-  --accent-secondary: #06b6d4;
-  --shadow-color: #ffffff;
+  --accent-tertiary: #10b981;
+  --accent-quaternary: #8b5cf6;
+  --accent-pink: #ec4899;
+  --accent-yellow: #f59e0b;
+  --shadow-color: #2d3748;
+  --highlight-bg: #fef9e7;
+  --surface-warm: #fff7ed;
+  --surface-cool: #f0f9ff;
 }
 
 * {
@@ -34,12 +31,14 @@ html {
 }
 
 body {
-  background: var(--bg-primary);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-weight: 500;
   line-height: 1.5;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Focus styles for accessibility */
@@ -86,4 +85,47 @@ body {
 @keyframes checkerboard-move {
   0% { background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }
   100% { background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px; }
+}
+
+/* Colorful Neo-Brutalist Utilities */
+.gradient-bg-warm {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7d7 50%, #fce7f3 100%);
+}
+
+.gradient-bg-cool {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
+}
+
+.gradient-bg-rainbow {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7d7 20%, #fce7f3 40%, #e0f2fe 60%, #f0fdf4 80%, #fef3c7 100%);
+  animation: rainbow-shift 8s ease-in-out infinite;
+}
+
+@keyframes rainbow-shift {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(30deg); }
+}
+
+.brutal-shadow-color {
+  box-shadow: 4px 4px 0px 0px var(--accent-primary);
+}
+
+.brutal-shadow-multi {
+  box-shadow: 4px 4px 0px 0px var(--accent-primary), 8px 8px 0px 0px var(--accent-secondary);
+}
+
+.brutal-shadow-rainbow {
+  box-shadow:
+    2px 2px 0px 0px var(--accent-primary),
+    4px 4px 0px 0px var(--accent-secondary),
+    6px 6px 0px 0px var(--accent-tertiary),
+    8px 8px 0px 0px var(--accent-quaternary);
+}
+
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px) rotate(1deg);
 }

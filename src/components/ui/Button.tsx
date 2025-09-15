@@ -12,13 +12,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'md', loading = false, disabled, children, ...props }, ref) => {
     const getVariantStyles = (variant: string, disabled: boolean, loading: boolean) => {
-      const base = 'font-sans font-semibold border-2 rounded-lg transition-all duration-200 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-soft hover:shadow-soft-md';
-      let bg = 'bg-white text-gray-900 border-gray-300 hover:bg-gray-50 focus:ring-gray-500';
+      const base = 'font-sans font-black border-3 rounded-lg transition-all duration-200 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 hover-lift brutal-shadow-color';
+      let bg = 'bg-gradient-to-r from-white to-surface-50 text-surface-900 border-surface-600 hover:from-surface-100 hover:to-surface-200 focus:ring-surface-500';
 
-      if (variant === 'primary') bg = 'bg-orange-500 text-white border-orange-500 hover:bg-orange-600 focus:ring-orange-500';
-      if (variant === 'accent') bg = 'bg-cyan-500 text-white border-cyan-500 hover:bg-cyan-600 focus:ring-cyan-500';
+      if (variant === 'primary') bg = 'bg-gradient-to-r from-primary-500 to-pink-500 text-white border-surface-800 hover:from-primary-600 hover:to-pink-600 focus:ring-primary-500';
+      if (variant === 'accent') bg = 'bg-gradient-to-r from-accent-500 to-emerald-500 text-white border-surface-800 hover:from-accent-600 hover:to-emerald-600 focus:ring-accent-500';
 
-      const state = disabled || loading ? 'opacity-50 cursor-not-allowed hover:bg-current' : '';
+      const state = disabled || loading ? 'opacity-50 cursor-not-allowed hover:transform-none' : '';
 
       return `${base} ${bg} ${state}`;
     };

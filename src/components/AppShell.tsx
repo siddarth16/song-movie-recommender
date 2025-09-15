@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -10,116 +9,63 @@ interface AppShellProps {
 }
 
 export function AppShell({ children }: AppShellProps) {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const pathname = usePathname();
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' || 'light';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-  };
 
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="border-b-2 border-gray-200 bg-white/95 backdrop-blur-sm sticky top-0 z-40 shadow-soft">
+      <header className="border-b-4 border-surface-800 bg-white/95 backdrop-blur-sm sticky top-0 z-40 brutal-shadow-multi">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <Link
               href="/"
-              className="font-mono font-black text-xl hover:scale-105 transition-transform duration-75"
+              className="font-mono font-black text-2xl hover:scale-105 transition-all duration-200 hover-lift"
               aria-label="Go to homepage"
             >
-              RECO<span className="text-primary-500">•</span>MMEND
+              <span className="text-primary-600">RECO</span>
+              <span className="text-accent-500">•</span>
+              <span className="text-emerald-600">MMEND</span>
             </Link>
 
             {/* Navigation */}
-            <nav className="hidden md:flex items-center gap-1" role="navigation">
+            <nav className="hidden md:flex items-center gap-2" role="navigation">
               <NavLink href="/" active={pathname === '/'}>
-                Home
+                🏠 Home
               </NavLink>
               <NavLink href="/songs" active={pathname === '/songs'}>
-                Songs
+                🎵 Songs
               </NavLink>
               <NavLink href="/movies" active={pathname === '/movies'}>
-                Movies
+                🎬 Movies
               </NavLink>
               <NavLink href="/tvshows" active={pathname === '/tvshows'}>
-                TV Shows
+                📺 TV Shows
               </NavLink>
             </nav>
 
-            {/* Theme Toggle */}
-            <div className="hidden md:flex items-center gap-2">
-              <span className="font-sans text-sm text-gray-600">Light</span>
-              <button
-                onClick={toggleTheme}
-                className={cn(
-                  'relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
-                  theme === 'dark' ? 'bg-primary-500' : 'bg-gray-200'
-                )}
-                role="switch"
-                aria-checked={theme === 'dark'}
-                aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
-              >
-                <span
-                  className={cn(
-                    'inline-block h-4 w-4 transform rounded-full bg-white transition-transform shadow-sm',
-                    theme === 'dark' ? 'translate-x-6' : 'translate-x-1'
-                  )}
-                />
-              </button>
-              <span className="font-sans text-sm text-gray-600">Dark</span>
+            {/* Decorative Element */}
+            <div className="hidden md:flex items-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary-400 to-pink-400 rounded-full animate-pulse"></div>
             </div>
 
           </div>
 
           {/* Mobile Navigation */}
-          <nav className="md:hidden py-4 border-t border-gray-200" role="navigation">
-            <div className="grid grid-cols-2 gap-2 mb-4">
+          <nav className="md:hidden py-4 border-t-2 border-surface-300" role="navigation">
+            <div className="grid grid-cols-2 gap-3">
               <NavLink href="/" active={pathname === '/'}>
-                Home
+                🏠 Home
               </NavLink>
               <NavLink href="/songs" active={pathname === '/songs'}>
-                Songs
+                🎵 Songs
               </NavLink>
               <NavLink href="/movies" active={pathname === '/movies'}>
-                Movies
+                🎬 Movies
               </NavLink>
               <NavLink href="/tvshows" active={pathname === '/tvshows'}>
-                TV Shows
+                📺 TV Shows
               </NavLink>
-            </div>
-
-            {/* Mobile Theme Toggle */}
-            <div className="flex items-center justify-center gap-2 pt-2 border-t border-gray-100">
-              <span className="font-sans text-sm text-gray-600">Light</span>
-              <button
-                onClick={toggleTheme}
-                className={cn(
-                  'relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
-                  theme === 'dark' ? 'bg-primary-500' : 'bg-gray-200'
-                )}
-                role="switch"
-                aria-checked={theme === 'dark'}
-                aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
-              >
-                <span
-                  className={cn(
-                    'inline-block h-4 w-4 transform rounded-full bg-white transition-transform shadow-sm',
-                    theme === 'dark' ? 'translate-x-6' : 'translate-x-1'
-                  )}
-                />
-              </button>
-              <span className="font-sans text-sm text-gray-600">Dark</span>
             </div>
           </nav>
         </div>
@@ -131,26 +77,26 @@ export function AppShell({ children }: AppShellProps) {
       </main>
 
       {/* Footer */}
-      <footer className="border-t-2 border-gray-200 bg-gray-50 mt-auto" role="contentinfo">
+      <footer className="border-t-4 border-surface-800 gradient-bg-cool mt-auto" role="contentinfo">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="font-sans font-medium text-sm text-center">
-              Powered by advanced AI • No tracking • Privacy-first design
+            <p className="font-sans font-bold text-sm text-center text-surface-800">
+              ⚡ Powered by advanced AI • 🔒 No tracking • 🎨 Privacy-first design
             </p>
             <div className="flex gap-4">
               <a
                 href="https://github.com"
-                className="font-sans font-medium text-sm hover:text-primary-500 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                className="font-sans font-bold text-sm text-purple-600 hover:text-purple-800 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 hover-lift"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub
+                📚 GitHub
               </a>
               <Link
                 href="/privacy"
-                className="font-sans font-medium text-sm hover:text-primary-500 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                className="font-sans font-bold text-sm text-emerald-600 hover:text-emerald-800 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 hover-lift"
               >
-                Privacy
+                🛡️ Privacy
               </Link>
             </div>
           </div>
@@ -171,10 +117,10 @@ function NavLink({ href, active, children }: NavLinkProps) {
     <Link
       href={href}
       className={cn(
-        'font-sans font-semibold px-4 py-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
+        'font-sans font-bold px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 hover-lift border-2',
         active
-          ? 'bg-primary-500 text-white shadow-soft'
-          : 'bg-white text-gray-700 border border-gray-200 shadow-soft hover:shadow-soft-md hover:bg-gray-50'
+          ? 'bg-gradient-to-r from-primary-500 to-pink-500 text-white border-surface-800 brutal-shadow-color'
+          : 'bg-white text-surface-800 border-surface-300 hover:border-primary-400 hover:bg-primary-50 brutal-shadow-rainbow'
       )}
     >
       {children}
