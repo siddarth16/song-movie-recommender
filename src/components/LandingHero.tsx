@@ -11,7 +11,7 @@ export function LandingHero() {
         <h1 className="text-display font-mono font-black mb-6 text-black">
           Find your next track, film & series.
         </h1>
-        <p className="text-lg font-mono font-bold max-w-2xl mx-auto mb-12 text-surface-800">
+        <p className="text-lg font-sans font-medium max-w-2xl mx-auto mb-12 text-surface-800">
           Give us up to five seeds. Gemini 2.5 Flash will riff on your taste.
         </p>
 
@@ -35,7 +35,7 @@ export function LandingHero() {
         </div>
 
         {/* Main CTAs */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <CTACard
             href="/songs"
             title="Songs"
@@ -73,8 +73,8 @@ function FeatureCard({ title, description, emoji }: FeatureCardProps) {
   return (
     <Card className="text-center p-6">
       <div className="text-4xl mb-4">{emoji}</div>
-      <h3 className="font-mono font-black text-lg mb-2 text-black">{title}</h3>
-      <p className="font-mono font-bold text-sm text-surface-800">{description}</p>
+      <h3 className="font-sans font-bold text-lg mb-2 text-black">{title}</h3>
+      <p className="font-sans font-medium text-sm text-surface-800">{description}</p>
     </Card>
   );
 }
@@ -108,7 +108,7 @@ function CTACard({ href, title, description, emoji, color }: CTACardProps) {
           <h2 className="font-mono font-black text-title mb-4 text-black">
             {title}
           </h2>
-          <p className="font-mono font-bold text-lg text-surface-800 leading-relaxed">
+          <p className="font-sans font-medium text-lg text-surface-800 leading-relaxed">
             {description}
           </p>
         </CardContent>

@@ -16,9 +16,9 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="space-y-2">
         {label && (
-          <label 
+          <label
             htmlFor={selectId}
-            className="block font-mono font-bold text-sm text-black"
+            className="block font-sans font-medium text-sm text-gray-700"
           >
             {label}
           </label>
@@ -26,13 +26,10 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <select
           id={selectId}
           className={cn(
-            'border-4 border-black px-4 py-3 font-mono text-lg bg-white text-black transition-all duration-75 w-full cursor-pointer',
-            error && 'border-red-500 focus:border-red-500',
+            'border-2 border-gray-300 rounded-lg px-4 py-3 font-sans text-base bg-white text-gray-900 transition-all duration-200 w-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-soft',
+            error && 'border-red-500 focus:border-red-500 focus:ring-red-500',
             className
           )}
-          style={{boxShadow: 'none'}}
-          onFocus={(e) => e.target.style.boxShadow = '2px 2px 0px 0px #000000'}
-          onBlur={(e) => e.target.style.boxShadow = 'none'}
           ref={ref}
           aria-invalid={error ? 'true' : 'false'}
           aria-describedby={error ? `${selectId}-error` : undefined}
@@ -45,9 +42,9 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           ))}
         </select>
         {error && (
-          <p 
+          <p
             id={`${selectId}-error`}
-            className="text-sm text-red-600 font-mono font-bold"
+            className="text-sm text-red-600 font-sans font-medium"
             role="alert"
           >
             {error}

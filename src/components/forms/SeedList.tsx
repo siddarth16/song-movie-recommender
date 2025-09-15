@@ -126,7 +126,7 @@ export function SeedList({ domain, seeds, onSeedsChange, maxSeeds = 5 }: SeedLis
 
           {seeds.length === 0 && (
             <div className="text-center py-8 text-surface-600">
-              <p className="font-mono font-bold mb-4">No seeds yet!</p>
+              <p className="font-sans font-medium mb-4">No seeds yet!</p>
               <Button onClick={addSeed} variant="primary">
                 Add Your First Seed
               </Button>
@@ -175,7 +175,7 @@ function SeedRow({
   return (
     <div className="p-4 border-2 border-black bg-surface-50">
       <div className="flex justify-between items-start mb-3">
-        <span className="font-mono font-bold text-sm text-surface-800">
+        <span className="font-sans font-medium text-sm text-surface-800">
           Seed #{index + 1}
         </span>
         {canRemove && (

@@ -13,12 +13,11 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     return (
       <div
         className={cn(
-          'bg-white border-4 border-black p-6',
-          interactive && 'cursor-pointer hover:transform hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-75',
+          'bg-white border-2 border-gray-200 rounded-lg p-6 shadow-soft',
+          interactive && 'cursor-pointer hover:shadow-soft-md hover:transform hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-200',
           tilt && 'hover:rotate-1',
           className
         )}
-        style={{boxShadow: '4px 4px 0px 0px #000000'}}
         ref={ref}
         {...props}
       >

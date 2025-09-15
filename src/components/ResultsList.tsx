@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Tooltip } from '@/components/ui/Tooltip';
 import { Recommendation, Domain } from '@/types';
 import { formatYear, truncateText } from '@/lib/utils';
 import { useToast } from '@/components/ui/Toast';
@@ -100,7 +101,7 @@ export function ResultsList({ domain, recommendations, isLoading, error }: Resul
       )}
 
       {/* Results Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {recommendations.map((rec, index) => (
           <RecommendationCard
             key={index}
@@ -132,15 +133,17 @@ function RecommendationCard({ recommendation, rank }: RecommendationCardProps) {
     <Card className="h-full">
       <CardHeader>
         <div className="flex justify-between items-start gap-2">
-          <span className="font-mono font-bold text-sm text-surface-600">
+          <span className="font-sans font-medium text-sm text-surface-600">
             #{rank}
           </span>
-          <div className="flex items-center gap-2">
-            <div className={`w-3 h-3 ${confidenceColor} border border-black`} />
-            <span className="font-mono font-bold text-sm">
-              {confidencePercent}%
-            </span>
-          </div>
+          <Tooltip content={`${confidencePercent}% confidence - How similar this recommendation is to your seeds based on genre, style, and themes`}>
+            <div className="flex items-center gap-2 cursor-help">
+              <div className={`w-3 h-3 ${confidenceColor} border border-black`} />
+              <span className="font-sans font-bold text-sm">
+                {confidencePercent}% confidence
+              </span>
+            </div>
+          </Tooltip>
         </div>
         <CardTitle className="text-lg leading-tight">
           {recommendation.title}
@@ -149,7 +152,7 @@ function RecommendationCard({ recommendation, rank }: RecommendationCardProps) {
       
       <CardContent className="space-y-3">
         <div className="space-y-1">
-          <p className="font-mono font-bold text-sm text-surface-800">
+          <p className="font-sans font-medium text-sm text-surface-800">
             {creator} • {formatYear(recommendation.year)}
           </p>
           {recommendation.genres.length > 0 && (
@@ -157,13 +160,13 @@ function RecommendationCard({ recommendation, rank }: RecommendationCardProps) {
               {recommendation.genres.slice(0, 3).map((genre) => (
                 <span
                   key={genre}
-                  className="px-2 py-1 bg-surface-200 border border-black font-mono text-xs font-bold"
+                  className="px-2 py-1 bg-surface-200 border border-black font-sans text-xs font-medium"
                 >
                   {genre}
                 </span>
               ))}
               {recommendation.genres.length > 3 && (
-                <span className="px-2 py-1 bg-surface-200 border border-black font-mono text-xs font-bold">
+                <span className="px-2 py-1 bg-surface-200 border border-black font-sans text-xs font-medium">
                   +{recommendation.genres.length - 3}
                 </span>
               )}
@@ -172,7 +175,7 @@ function RecommendationCard({ recommendation, rank }: RecommendationCardProps) {
         </div>
 
         <div className="bg-surface-50 p-3 border-2 border-surface-300">
-          <p className="font-mono text-sm font-medium leading-relaxed">
+          <p className="font-sans text-sm font-normal leading-relaxed">
             "{truncateText(recommendation.why, 200)}"
           </p>
         </div>

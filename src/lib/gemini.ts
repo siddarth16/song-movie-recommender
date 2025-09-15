@@ -11,6 +11,7 @@ Return ONLY minified JSON conforming to this schema:
 - Keep \`confidence\` in [0,1].
 - Avoid duplicates; avoid seeds themselves.
 - Prefer globally recognizable items where possible.
+- For \`why\` field: Vary explanations by highlighting different aspects (genre blend, vocal style, production, era, mood, instrumentation, or cultural context). Make each explanation unique and specific. Examples: "Dreamy shoegaze textures with ethereal vocals", "Raw garage rock energy meets lo-fi production", "Jazz-influenced rhythms with indie sensibilities".
 - Max 2 lines worth of characters in \`why\` (<=220 chars).
 - Respond with pure JSON. No markdown.
 SEEDS:
@@ -27,6 +28,7 @@ Return ONLY minified JSON conforming to this schema:
 - Keep \`confidence\` in [0,1].
 - Avoid duplicates; avoid seeds themselves.
 - Mix a few non-obvious choices if confidence is high.
+- For \`why\` field: Vary explanations by focusing on different cinematic elements (visual style, narrative structure, thematic depth, character development, directorial technique, or cultural impact). Make each unique. Examples: "Haunting cinematography explores existential themes", "Non-linear storytelling with baroque visual flair", "Intimate character study set against epic backdrop".
 - Respond with pure JSON. No markdown.
 SEEDS:
 {seeds_json}
@@ -43,6 +45,7 @@ Return ONLY minified JSON conforming to this schema:
 - Avoid duplicates; avoid seeds themselves.
 - Mix a few non-obvious choices if confidence is high.
 - Consider both streaming and broadcast series.
+- For \`why\` field: Vary explanations by emphasizing different series elements (character arcs, world-building, dialogue style, narrative complexity, tonal balance, production values, or cultural themes). Make each distinctive. Examples: "Complex anti-hero journey with moral ambiguity", "Ensemble cast navigating intricate plot webs", "Witty dialogue meets supernatural mystery".
 - Respond with pure JSON. No markdown.
 SEEDS:
 {seeds_json}

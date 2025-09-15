@@ -150,14 +150,14 @@ export function RecommenderPageContent({ domain, title, description }: Recommend
         <h1 className="text-title font-mono font-black mb-4 text-black">
           {title}
         </h1>
-        <p className="text-lg font-mono font-bold text-surface-800 max-w-2xl">
+        <p className="text-lg font-sans font-medium text-surface-800 max-w-2xl">
           {description}
         </p>
       </div>
 
       <div className="space-y-8">
         {/* Input Section */}
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             <SeedList
               domain={domain}
@@ -187,13 +187,13 @@ export function RecommenderPageContent({ domain, title, description }: Recommend
               variant="primary"
               size="lg"
               className="w-full"
-              disabled={seeds.filter(s => s.title.trim()).length === 0}
+              disabled={seeds.filter(s => s.title.trim()).length === 0 || isLoading}
             >
-              Get Recommendations
+              {isLoading ? 'Generating...' : 'Get Recommendations'}
             </Button>
 
             {/* Keyboard Shortcut Hint */}
-            <p className="text-xs font-mono text-surface-600 text-center">
+            <p className="text-xs font-sans text-surface-600 text-center">
               💡 Press Cmd+Enter (Mac) or Ctrl+Enter (PC) to submit
             </p>
           </div>
@@ -204,10 +204,10 @@ export function RecommenderPageContent({ domain, title, description }: Recommend
           <div className="bg-red-100 border-4 border-red-500 p-4">
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="font-mono font-black text-red-900 mb-2">
+                <h3 className="font-sans font-bold text-red-900 mb-2">
                   ❌ Error
                 </h3>
-                <p className="font-mono font-bold text-red-800">
+                <p className="font-sans font-medium text-red-800">
                   {error}
                 </p>
               </div>

@@ -12,14 +12,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'md', loading = false, disabled, children, ...props }, ref) => {
     const getVariantStyles = (variant: string, disabled: boolean, loading: boolean) => {
-      const base = 'font-mono font-bold border-4 border-black transition-all duration-75 cursor-pointer select-none';
-      let bg = 'bg-white text-black';
-      
-      if (variant === 'primary') bg = 'bg-orange-500 text-white';
-      if (variant === 'accent') bg = 'bg-cyan-500 text-white';
-      
-      const state = disabled || loading ? 'opacity-50 cursor-not-allowed' : '';
-      
+      const base = 'font-sans font-semibold border-2 rounded-lg transition-all duration-200 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-soft hover:shadow-soft-md';
+      let bg = 'bg-white text-gray-900 border-gray-300 hover:bg-gray-50 focus:ring-gray-500';
+
+      if (variant === 'primary') bg = 'bg-orange-500 text-white border-orange-500 hover:bg-orange-600 focus:ring-orange-500';
+      if (variant === 'accent') bg = 'bg-cyan-500 text-white border-cyan-500 hover:bg-cyan-600 focus:ring-cyan-500';
+
+      const state = disabled || loading ? 'opacity-50 cursor-not-allowed hover:bg-current' : '';
+
       return `${base} ${bg} ${state}`;
     };
 
@@ -37,7 +37,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           sizes[size],
           className
         )}
-        style={{boxShadow: '4px 4px 0px 0px #000000'}}
         disabled={disabled || loading}
         ref={ref}
         {...props}
